@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top-left-name" onclick="goToHome()">CHIRANJIT CHAKMA</div>
+
+<div class="page">
+    <h1>Skills</h1>
+    <p>My skills include...</p>
+    <a href="index.html" class="menu-item">Back to Home</a>
+</div>
+
+<script>
+    function goToHome() {
+        // Clear the flag to ensure animation plays when clicking the name
+        sessionStorage.removeItem('skipIntro');
+        window.location.href = "index.html";
+    }
+</script>
+</body>
+</html>
