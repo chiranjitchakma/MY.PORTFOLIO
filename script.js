@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check if we should skip the intro (when coming from back button)
   if (sessionStorage.getItem('skipIntro') === 'true') {
     // Skip the intro and show menu directly
-    intro.style.display = "none";
-    menu.classList.remove("hidden");
+    if (intro) intro.style.display = "none";
+    if (menu) menu.classList.remove("hidden");
     addTopLeftName();
 
     // Clear the flag
@@ -14,21 +14,32 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // Normal behavior - first load
     function showMenu() {
-      intro.style.display = "none";
-      menu.classList.remove("hidden");
+      if (intro) intro.style.display = "none";
+      if (menu) menu.classList.remove("hidden");
       addTopLeftName();
     }
 
-    const timer = setTimeout(showMenu, 3000);
-    intro.addEventListener("click", () => {
-      clearTimeout(timer);
-      showMenu();
-    });
+    if (intro) {
+      const timer = setTimeout(showMenu, 3000);
+      intro.addEventListener("click", () => {
+        clearTimeout(timer);
+        showMenu();
+      });
+
+      // Add touch event for mobile
+      intro.addEventListener('touchstart', function() {
+        clearTimeout(timer);
+        showMenu();
+      });
+    }
   }
 });
 
 // Helper function to add the top-left name
 function addTopLeftName() {
+  // Check if already exists
+  if (document.querySelector('.top-left-name')) return;
+
   const nameDiv = document.createElement("div");
   nameDiv.className = "top-left-name";
   nameDiv.textContent = "CHIRANJIT CHAKMA";
@@ -55,3 +66,8 @@ window.addEventListener('pageshow', function(event) {
     sessionStorage.setItem('skipIntro', 'true');
   }
 });
+
+// Toggle function for expandable cards
+function toggleExpand(card) {
+  card.classList.toggle('expanded');
+}
