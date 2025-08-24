@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <style>
+        /* Extra styles just for Education headings */
+        .edu-heading {
+            color: #4B0082; /* Dark purple for strong readability */
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px; /* Gap above */
+            margin-bottom: 5px; /* Small gap below */
+        }
+        .edu-details {
+            color: #333; /* Dark gray for details (easy to read) */
+            margin: 2px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="top-left-name" onclick="goToHome()">CHIRANJIT CHAKMA</div>
+
+<div class="page">
+    <h1>Who I Am</h1>
+
+    <div class="expandable-card" onclick="toggleExpand(this)">
+        <h2>Introduction</h2>
+        <div class="card-content">
+            <p>I'm a passionate developer and learning web and mobile development. I love creating innovative solutions and exploring new technologies.</p>
+            <p>My journey in programming started several years ago, and I've been constantly learning and improving my skills ever since.</p>
+            <p>I’m currently pursuing a <strong>B.Sc. in Data Science & AI</strong> at <strong>Amrita Vishwa Vidyapeetham, Mysore</strong>. Alongside my studies, I’m building projects in <strong>Flutter, Firebase, and Web Development</strong>.</p>
+            <p>I aim to grow as a <strong>Cybersecurity Professional</strong> while also very much interested on AI/ML-based applications.</p>
+        </div>
+    </div>
+
+    <div class="expandable-card" onclick="toggleExpand(this)">
+        <h2>Education</h2>
+        <div class="card-content">
+            <p class="edu-heading" style="color: purple;">UNDER GRADUATE</p>
+            <p class="edu-details">B.Sc. in Data Science & AI</p>
+            <p class="edu-details">Amrita Vishwa Vidyapeetham, Mysore (2024–2027)</p>
+            <p class="edu-details">1st Semester CGPA: 6.04 / 10</p>
+            <p class="edu-details">Currently in 3rd Semester</p>
+
+            <p class="edu-heading" style="color: purple;">Class 12</p>
+            <p class="edu-details">Learners PU College (2022–2024)</p>
+            <p class="edu-details">Percentage: 80.01%</p>
+        </div>
+    </div>
+
+    <div class="expandable-card" onclick="toggleExpand(this)">
+        <h2>Experience</h2>
+        <div class="card-content">
+            <p><span style="color: purple;"><strong>App Developer</strong></span> – Personal Project (2024–Present)</p>
+            <p>Developing a social media app with features like posts, ranking system, and in-app store using Flutter & Firebase.</p>
+
+            <p><span style="color: purple;"><strong>Web Developer</strong></span> – Personal Projects</p>
+            <p>Created an HTML-based online game and working on hosting and monetization to make it public.</p>
+        </div>
+    </div>
+
+    <div class="expandable-card" onclick="toggleExpand(this)">
+        <h2>Passions & Interests</h2>
+        <div class="card-content">
+            <p>Beyond coding, I'm passionate about:</p>
+            <ul>
+                <li>• Open source contribution</li>
+                <li>• Exploring AI, ML, and Cybersecurity</li>
+                <li>• Photography and digital art</li>
+                <li>• Learning new programming languages</li>
+                <li>• Participating in hackathons and coding competitions</li>
+                <li>• Building apps and games that people can actually use</li>
+            </ul>
+        </div>
+    </div>
+
+    <a href="index.html" class="menu-item">Back to Home</a>
+</div>
+
+<script>
+    function toggleExpand(card) {
+        // Toggle the clicked card
+        card.classList.toggle('expanded');
+    }
+
+    function goToHome() {
+        // Clear the flag to ensure animation plays when clicking the name
+        sessionStorage.removeItem('skipIntro');
+        window.location.href = "index.html";
+    }
+</script>
+</body>
+</html>
