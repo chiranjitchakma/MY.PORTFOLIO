@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Chiranjit Resume</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
@@ -17,14 +17,15 @@
             overflow: hidden;
             position: relative;
         }
-
+        
         .name-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
+            text-align: center;
         }
-
+        
         .name-part {
             font-size: 5rem;
             color: #00e5ff;
@@ -32,57 +33,95 @@
             opacity: 0;
             position: relative;
         }
-
+        
         #first-name {
             animation: slideInFromLeft 1.5s ease-out forwards;
             margin-right: 0.2em;
         }
-
+        
         #last-name {
             animation: slideInFromRight 1.5s ease-out forwards;
         }
-
+        
         @keyframes slideInFromLeft {
-            0% {
+            0% { 
                 opacity: 0;
                 transform: translateX(-100vw);
             }
-            100% {
+            100% { 
                 opacity: 1;
                 transform: translateX(0);
             }
         }
-
+        
         @keyframes slideInFromRight {
-            0% {
+            0% { 
                 opacity: 0;
                 transform: translateX(100vw);
             }
-            100% {
+            100% { 
                 opacity: 1;
                 transform: translateX(0);
             }
         }
 
         /* Mobile-specific styles */
-        @media (max-width: 600px) {
+        @media screen and (max-width: 768px) {
             .name-part {
-                font-size: 3rem;
+                font-size: 2.8rem !important;
+                text-align: center;
+                width: 100%;
             }
-
+            
             .name-container {
                 flex-direction: column;
                 align-items: center;
+                padding: 0 10px;
             }
-
+            
             #first-name {
                 margin-right: 0;
-                margin-bottom: 0.2em;
+                margin-bottom: 0;
+                text-align: center;
             }
-
+            
             /* Hide back button on mobile */
             .back-button {
-                display: none;
+                display: none !important;
+            }
+            
+            /* Ensure menu fits on mobile */
+            .menu {
+                grid-template-columns: 1fr !important;
+                width: 85% !important;
+                grid-gap: 20px !important;
+            }
+            
+            .menu-item {
+                padding: 18px !important;
+                font-size: 1.4rem !important;
+            }
+            
+            /* Adjust top-left name for mobile */
+            .top-left-name {
+                left: 15px !important;
+                font-size: 1.2rem !important;
+            }
+        }
+
+        /* Desktop styles - ensure they're preserved */
+        @media screen and (min-width: 769px) {
+            .name-container {
+                flex-direction: row;
+            }
+            
+            #first-name {
+                margin-right: 0.2em;
+                margin-bottom: 0;
+            }
+            
+            .back-button {
+                display: inline-block;
             }
         }
     </style>
@@ -134,10 +173,19 @@
           showMenu();
         });
       }
+
+      // Add touch event for mobile
+      intro.addEventListener('touchstart', function() {
+        clearTimeout(timer);
+        showMenu();
+      });
     });
 
     // Helper function to add the top-left name
     function addTopLeftName() {
+      // Check if already exists
+      if (document.querySelector('.top-left-name')) return;
+      
       const nameDiv = document.createElement("div");
       nameDiv.className = "top-left-name";
       nameDiv.textContent = "CHIRANJIT CHAKMA";
