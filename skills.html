@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Skills</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
@@ -13,12 +13,11 @@
 <div class="page">
     <h1>Skills</h1>
     <p>My skills include...</p>
-    <a href="index.html" class="menu-item">Back to Home</a>
+    <a href="index.html" class="menu-item back-button">Back to Home</a>
 </div>
 
 <script>
     function goToHome() {
-        // Clear the flag to ensure animation plays when clicking the name
         sessionStorage.removeItem('skipIntro');
         window.location.href = "index.html";
     }
