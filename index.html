@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiranjit Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <style>
+        /* New animation styles */
+        .intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .name-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .name-part {
+            font-size: 5rem;
+            color: #00e5ff;
+            text-shadow: 0 0 20px white, 0 0 40px #00e5ff, 0 0 80px white;
+            opacity: 0;
+            position: relative;
+        }
+
+        #first-name {
+            animation: slideInFromLeft 1.5s ease-out forwards;
+            margin-right: 0.2em;
+        }
+
+        #last-name {
+            animation: slideInFromRight 1.5s ease-out forwards;
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100vw);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 600px) {
+            .name-part {
+                font-size: 3rem;
+            }
+
+            .name-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #first-name {
+                margin-right: 0;
+                margin-bottom: 0.2em;
+            }
+
+            /* Hide back button on mobile */
+            .back-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Intro Screen -->
+<div class="intro">
+    <div class="name-container">
+        <div id="first-name" class="name-part">CHIRANJIT</div>
+        <div id="last-name" class="name-part">CHAKMA</div>
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="menu hidden">
+    <a href="about.html" class="menu-item">Who I Am</a>
+    <a href="projects.html" class="menu-item">Projects</a>
+    <a href="skills.html" class="menu-item">Skills</a>
+    <a href="awards.html" class="menu-item">Awards & Achievement</a>
+</div>
+
+<script src="script.js"></script>
+<script>
+    // Update the script.js to handle the new intro structure
+    document.addEventListener("DOMContentLoaded", () => {
+      const intro = document.querySelector(".intro");
+      const menu = document.querySelector(".menu");
+
+      // Check if we should skip the intro (when coming from back button)
+      if (sessionStorage.getItem('skipIntro') === 'true') {
+        // Skip the intro and show menu directly
+        intro.style.display = "none";
+        menu.classList.remove("hidden");
+        addTopLeftName();
+
+        // Clear the flag
+        sessionStorage.removeItem('skipIntro');
+      } else {
+        // Normal behavior - first load
+        function showMenu() {
+          intro.style.display = "none";
+          menu.classList.remove("hidden");
+          addTopLeftName();
+        }
+
+        const timer = setTimeout(showMenu, 3000);
+        intro.addEventListener("click", () => {
+          clearTimeout(timer);
+          showMenu();
+        });
+      }
+    });
+
+    // Helper function to add the top-left name
+    function addTopLeftName() {
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "top-left-name";
+      nameDiv.textContent = "CHIRANJIT CHAKMA";
+      nameDiv.onclick = function() {
+        // Clear the flag to ensure animation plays when clicking the name
+        sessionStorage.removeItem('skipIntro');
+        window.location.href = "index.html";
+      };
+      document.body.appendChild(nameDiv);
+    }
+
+    // Set flag when navigating away from index page via menu items
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('menu-item') &&
+          !e.target.href.includes('index.html')) {
+        sessionStorage.setItem('skipIntro', 'true');
+      }
+    });
+
+    // Handle browser back/forward navigation
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        // Page was loaded from back/forward cache
+        sessionStorage.setItem('skipIntro', 'true');
+      }
+    });
+</script>
+</body>
+</html>
