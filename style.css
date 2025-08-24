@@ -4,6 +4,7 @@ body {
   font-family: 'Audiowide', sans-serif;
   color: white;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%; /* Prevent text scaling in landscape */
 }
 
 /* Intro Screen */
@@ -123,7 +124,7 @@ body {
 }
 
 .expandable-card.expanded {
-  max-height: none; /* Changed from 400px to none - this fixes the issue */
+  max-height: none;
   box-shadow: 0 0 30px white, 0 0 60px #00e5ff;
 }
 
@@ -143,7 +144,7 @@ body {
 
 .expandable-card.expanded .card-content {
   opacity: 1;
-  max-height: none; /* Changed to allow full expansion */
+  max-height: none;
 }
 
 .expandable-card:not(.expanded)::after {
@@ -176,53 +177,111 @@ body {
   transform: translateX(5px);
 }
 
-/* ===== AUTO-RESPONSIVE FIXES ===== */
-@media (max-width: 600px) {
-  #name {
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
-  }
+/* Back button styling - HIDDEN ON MOBILE */
+.back-button {
+  margin-top: 30px;
+  display: inline-block;
+}
 
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media screen and (max-width: 768px) {
+  /* Base font size adjustment for mobile */
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Intro screen adjustments */
+  #name {
+    font-size: 2.8rem;
+    text-align: center;
+    padding: 0 10px;
+  }
+  
+  /* Menu adjustments */
   .menu {
     grid-template-columns: 1fr;
     width: 85%;
     grid-gap: 20px;
   }
-
+  
   .menu-item {
-    padding: 15px;
-    font-size: 1.2rem;
+    padding: 18px;
+    font-size: 1.4rem;
   }
-
+  
+  /* Top-left name adjustments */
   .top-left-name {
     left: 15px;
     font-size: 1.2rem;
   }
-
-  .expandable-card {
-    width: 90%;
+  
+  /* Page content adjustments */
+  .page {
+    padding-top: 70px;
   }
-
+  
   .page h1 {
     font-size: 2.2rem;
+    padding: 0 15px;
+  }
+  
+  .page p {
+    font-size: 1.1rem;
+    padding: 0 15px;
+  }
+  
+  /* Expandable cards adjustments */
+  .expandable-card {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  .expandable-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  /* HIDE BACK BUTTON ON MOBILE */
+  .back-button {
+    display: none !important;
+  }
+  
+  /* Education heading adjustments for mobile */
+  .edu-heading {
+    font-size: 1.1rem !important;
+  }
+  
+  .edu-details {
+    font-size: 1rem !important;
   }
 }
 
-@media (min-width: 601px) and (max-width: 1024px) {
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
   #name {
-    font-size: clamp(3.5rem, 8vw, 4.5rem);
+    font-size: 4rem;
   }
-
+  
   .menu {
     grid-gap: 30px;
   }
-
+  
   .page h1 {
     font-size: 2.8rem;
   }
+  
+  /* Keep back button visible on tablet */
+  .back-button {
+    display: inline-block;
+  }
 }
 
-/* Back button styling */
-.back-button {
-  margin-top: 30px;
-  display: inline-block;
+/* Desktop styles - ensure they're preserved */
+@media screen and (min-width: 1025px) {
+  /* All desktop styles remain exactly the same */
+  
+  /* Ensure back button is visible on desktop */
+  .back-button {
+    display: inline-block;
+  }
 }
