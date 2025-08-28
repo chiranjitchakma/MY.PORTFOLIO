@@ -1,3 +1,19 @@
+/* Prevent text selection on ALL devices */
+* {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+/* Allow text selection only in input fields and textareas */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 body {
   margin: 0;
   background-color: black;
@@ -130,7 +146,7 @@ body {
 .expandable-card h2 {
   color: #00e5ff;
   margin-top: 0;
-  font-size: 1.5rem; /* CHANGE THIS LINE */
+  font-size: 1.8rem;
   text-shadow: 0 0 10px #00e5ff;
 }
 
@@ -211,7 +227,7 @@ body {
 
   .expandable-card {
     width: 90%;
-    border: 3px solid #00e5ff; /* CHANGED: from 2px to 3px */
+    border: 3px solid #00e5ff;
   }
 
   .page h1 {
