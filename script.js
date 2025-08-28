@@ -1,3 +1,32 @@
+// Prevent text selection on mobile devices
+document.addEventListener('DOMContentLoaded', function() {
+  // Prevent context menu (long press) on mobile
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Prevent text selection on touch devices
+  document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Prevent iOS text selection
+  document.addEventListener('touchstart', function(e) {
+    if (e.touches.length > 1) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+});
+
+// Additional prevention for drag events that might cause selection
+document.addEventListener('dragstart', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Your original code below
 document.addEventListener("DOMContentLoaded", () => {
   const intro = document.querySelector(".intro");
   const menu = document.querySelector(".menu");
@@ -5,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check if we should skip the intro (when coming from back button)
   if (sessionStorage.getItem('skipIntro') === 'true') {
     // Skip the intro and show menu directly
-    if (intro) intro.style.display = "none";
-    if (menu) menu.classList.remove("hidden");
+    intro.style.display = "none";
+    menu.classList.remove("hidden");
     addTopLeftName();
 
     // Clear the flag
@@ -14,24 +43,22 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // Normal behavior - first load
     function showMenu() {
-      if (intro) intro.style.display = "none";
-      if (menu) menu.classList.remove("hidden");
+      intro.style.display = "none";
+      menu.classList.remove("hidden");
       addTopLeftName();
     }
 
-    if (intro) {
-      const timer = setTimeout(showMenu, 3000);
-      intro.addEventListener("click", () => {
-        clearTimeout(timer);
-        showMenu();
-      });
+    const timer = setTimeout(showMenu, 3000);
+    intro.addEventListener("click", () => {
+      clearTimeout(timer);
+      showMenu();
+    });
 
-      // Add touch event for mobile
-      intro.addEventListener('touchstart', function() {
-        clearTimeout(timer);
-        showMenu();
-      });
-    }
+    // Add touch event for mobile
+    intro.addEventListener('touchstart', function() {
+      clearTimeout(timer);
+      showMenu();
+    });
   }
 });
 
