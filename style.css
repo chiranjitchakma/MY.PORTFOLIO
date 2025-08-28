@@ -130,7 +130,7 @@ body {
 .expandable-card h2 {
   color: #00e5ff;
   margin-top: 0;
-  font-size: 1.8rem; /* CHANGED: from 1.5rem to 1.8rem */
+  font-size: 1.5rem; /* CHANGE THIS LINE */
   text-shadow: 0 0 10px #00e5ff;
 }
 
@@ -217,7 +217,7 @@ body {
   .page h1 {
     font-size: 2.2rem;
   }
-  
+
   /* HIDE BACK BUTTON ON MOBILE */
   .back-button {
     display: none !important;
