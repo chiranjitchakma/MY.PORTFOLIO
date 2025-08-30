@@ -6,6 +6,40 @@
     <title>Awards & Achievement</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <style>
+        .award-heading {
+            color: #00e5ff;
+            margin-top: 0;
+            font-size: 1.4rem;
+            display: inline-block;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #00e5ff;
+            box-shadow: 0 2px 8px rgba(0, 229, 255, 0.4);
+            margin-bottom: 15px;
+        }
+        
+        .award-item {
+            margin: 12px 0;
+            padding: 10px;
+            background: rgba(0, 229, 255, 0.05);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            color: #ddd;
+            text-shadow: 0 0 3px rgba(0, 229, 255, 0.3);
+        }
+        
+        .award-item:hover {
+            background: rgba(0, 229, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .award-category {
+            color: #00e5ff;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <div class="top-left-name" onclick="goToHome()">CHIRANJIT CHAKMA</div>
@@ -15,24 +49,38 @@
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 90%; max-width: 900px; margin: 30px auto;">
         <div class="menu-item expandable-card" onclick="toggleExpand(this)" style="text-align: left; height: auto;">
-            <h2 style="color: #00e5ff; margin-top: 0; font-size: 1.4rem;">Professional Certifications</h2>
+            <h2 class="award-heading">Professional Certifications</h2>
             <div class="card-content">
-                <ul style="list-style-type: none; padding: 0; text-align: left;">
-                    <li>• Social Media App (2025)</li>
-                    <li>• UI/UX  Moderate </li>
-                    <li>• not applicable</li>
-                </ul>
+                <div class="award-item">
+                    <span class="award-category">Social Media App (2025)</span>
+                    Developed a complete social media application with Flutter and Firebase
+                </div>
+                <div class="award-item">
+                    <span class="award-category">UI/UX Design</span>
+                    Created modern and user-friendly interfaces for various applications
+                </div>
+                <div class="award-item">
+                    <span class="award-category">Web Development</span>
+                    Built responsive websites with HTML, CSS, and JavaScript
+                </div>
             </div>
         </div>
 
         <div class="menu-item expandable-card" onclick="toggleExpand(this)" style="text-align: left; height: auto;">
-            <h2 style="color: #00e5ff; margin-top: 0; font-size: 1.4rem;">Professional Development</h2>
+            <h2 class="award-heading">Professional Development</h2>
             <div class="card-content">
-                <ul style="list-style-type: none; padding: 0; text-align: left;">
-                    <li>• Improving myself slowly</li>
-                    <li>• Research Presentation</li>
-                    <li>• Currently learner python</li>
-                </ul>
+                <div class="award-item">
+                    <span class="award-category">Continuous Learning</span>
+                    Constantly improving skills through online courses and practice
+                </div>
+                <div class="award-item">
+                    <span class="award-category">Research Presentation</span>
+                    Presented technical research at college symposium
+                </div>
+                <div class="award-item">
+                    <span class="award-category">Python Programming</span>
+                    Currently enhancing Python skills for data science applications
+                </div>
             </div>
         </div>
     </div>
