@@ -34,7 +34,7 @@ body {
 #name {
   font-size: 5rem;
   color: #00e5ff;
-  text-shadow: 0 0 20px white, 0 0 40px #00e5ff, 0 0 80px white;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
   transform: perspective(600px) rotateX(10deg);
   animation: popUp 1.5s ease-out forwards;
 }
@@ -85,7 +85,7 @@ body {
   left: 30px;
   font-size: 1.5rem;
   color: #00e5ff;
-  text-shadow: 0 0 10px white, 0 0 20px #00e5ff;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.7);
   z-index: 100;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -93,7 +93,7 @@ body {
 
 .top-left-name:hover {
   transform: scale(1.05);
-  text-shadow: 0 0 15px white, 0 0 30px #00e5ff;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.9);
 }
 
 /* Page Content */
@@ -109,7 +109,7 @@ body {
 .page h1 {
   font-size: 3rem;
   color: #00e5ff;
-  text-shadow: 0 0 20px white, 0 0 40px #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
   margin-top: 0;
 }
 
@@ -117,7 +117,7 @@ body {
   font-size: 1.2rem;
   color: white;
   max-width: 600px;
-  text-shadow: 0 0 5px #00e5ff;
+  text-shadow: 0 0 3px rgba(0, 229, 255, 0.5);
 }
 
 /* Expandable cards */
@@ -147,7 +147,7 @@ body {
   color: #00e5ff;
   margin-top: 0;
   font-size: 1.8rem;
-  text-shadow: 0 0 10px #00e5ff;
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.7);
 }
 
 .expandable-card .card-content {
